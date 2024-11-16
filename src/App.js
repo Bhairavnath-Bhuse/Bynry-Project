@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import 'leaflet/dist/leaflet.css';
+import { Route, Routes } from 'react-router-dom';
+import MapComponent from './service/MapComponent';
+import Home from './pages/Home';
+import ProfileDetails from './service/ProfileDetails';
+import Navbar from './service/Navbar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <Navbar/>
+      <Routes>
+        {/* Main home route */}
+        <Route path="/" element={<Home />} />
+        
+        {/* Route for MapComponent to display the map with a given profile id */}
+        <Route path="/showmap/:id" element={<MapComponent />} />
+        <Route path="/profile/:id" element={<ProfileDetails />} />
+      </Routes>
     </div>
   );
 }
